@@ -4,7 +4,7 @@ resource "proxmox_lxc" "plex" {
   vmid         = "103"
   memory       = "2048"
   cores        = "4"
-  ostemplate   = "local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst"
+  ostemplate   = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
   password     = var.LXC_PASS
   unprivileged = true
   start        = true
@@ -18,4 +18,5 @@ resource "proxmox_lxc" "plex" {
     bridge = "vmbr0"
     ip     = "dhcp"
   }
+  ssh_public_keys = var.SSH_PUB_KEY
 }

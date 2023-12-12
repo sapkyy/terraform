@@ -1,17 +1,19 @@
-resource "proxmox_lxc" "plex" {
+resource "proxmox_lxc" "transmission" {
   target_node  = "pve"
-  hostname     = "plex"
-  vmid         = "103"
+  hostname     = "transmission"
+  vmid         = "104"
   memory       = "2048"
-  cores        = "4"
+  cores        = "1"
   ostemplate   = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
   password     = var.LXC_PASS
   unprivileged = true
   start        = true
   onboot       = true
+  nameserver   = "192.168.31.1"
+  searchdomain = "sapkyy.home"
   rootfs {
     storage = "local-zfs"
-    size    = "4G"
+    size    = "2G"
   }
   network {
     name   = "eth0"

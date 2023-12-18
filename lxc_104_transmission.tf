@@ -2,7 +2,7 @@ resource "proxmox_lxc" "transmission" {
   target_node  = "pve"
   hostname     = "transmission"
   vmid         = "104"
-  memory       = "2048"
+  memory       = "512"
   cores        = "1"
   ostemplate   = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
   password     = var.LXC_PASS
@@ -13,7 +13,7 @@ resource "proxmox_lxc" "transmission" {
   searchdomain = "sapkyy.home"
   rootfs {
     storage = "local-zfs"
-    size    = "2G"
+    size    = "1G"
   }
   network {
     name   = "eth0"

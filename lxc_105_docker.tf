@@ -11,14 +11,22 @@ resource "proxmox_lxc" "docker" {
   onboot       = true
   nameserver   = "192.168.31.1"
   searchdomain = "sapkyy.home"
+
+# add docker support
+  features { 
+    nesting = true
+  }
+
   rootfs {
     storage = "local-zfs"
     size    = "2G"
   }
+
   network {
     name   = "eth0"
     bridge = "vmbr0"
     ip     = "dhcp"
   }
+
   ssh_public_keys = var.SSH_PUB_KEY
 }

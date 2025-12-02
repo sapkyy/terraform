@@ -29,4 +29,11 @@ resource "proxmox_lxc" "rustdesk" {
   }
 
   ssh_public_keys = var.SSH_PUB_KEY
+
+  lifecycle {
+    ignore_changes = [
+      password
+    ]
+  }
+
 }

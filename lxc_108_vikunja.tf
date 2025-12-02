@@ -1,8 +1,8 @@
-resource "proxmox_lxc" "proxy" {
+resource "proxmox_lxc" "vikunja" {
   target_node  = "pve"
-  hostname     = "proxy"
-  vmid         = "107"
-  memory       = "512"
+  hostname     = "vikunja"
+  vmid         = "108"
+  memory       = "2048"
   cores        = "2"
   ostemplate   = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
   password     = var.LXC_PASS
@@ -19,7 +19,7 @@ resource "proxmox_lxc" "proxy" {
 
   rootfs {
     storage = "local-zfs"
-    size    = "4G"
+    size    = "10G"
   }
 
   network {
@@ -29,4 +29,11 @@ resource "proxmox_lxc" "proxy" {
   }
 
   ssh_public_keys = var.SSH_PUB_KEY
+
+  lifecycle {
+    ignore_changes = [
+      password
+    ]
+  }
+
 }

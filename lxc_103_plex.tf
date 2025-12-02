@@ -21,4 +21,11 @@ resource "proxmox_lxc" "plex" {
     ip     = "dhcp"
   }
   ssh_public_keys = var.SSH_PUB_KEY
+
+  lifecycle {
+    ignore_changes = [
+      password
+    ]
+  }
+
 }

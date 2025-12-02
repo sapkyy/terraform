@@ -1,7 +1,7 @@
-resource "proxmox_lxc" "docker" {
+resource "proxmox_lxc" "obsidian" {
   target_node  = "pve"
-  hostname     = "docker"
-  vmid         = "105"
+  hostname     = "obsidian"
+  vmid         = "109"
   memory       = "512"
   cores        = "1"
   ostemplate   = "local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.zst"
@@ -12,14 +12,9 @@ resource "proxmox_lxc" "docker" {
   nameserver   = "192.168.31.1"
   searchdomain = "sapkyy.home"
 
-# add docker support
-  features { 
-    nesting = true
-  }
-
   rootfs {
     storage = "local-zfs"
-    size    = "2G"
+    size    = "10G"
   }
 
   network {

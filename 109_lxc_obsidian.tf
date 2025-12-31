@@ -17,6 +17,11 @@ resource "proxmox_lxc" "obsidian" {
     size    = "10G"
   }
 
+  features {
+    nesting = true
+    keyctl  = true
+  }
+
   network {
     name   = "eth0"
     bridge = "vmbr0"
@@ -30,5 +35,4 @@ resource "proxmox_lxc" "obsidian" {
       password
     ]
   }
-
 }

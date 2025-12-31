@@ -1,0 +1,35 @@
+resource "proxmox_vm_qemu" "vikunja" {
+  name        = "vikunja"
+  target_node = "pve"
+  vmid        = 152
+  memory      = 1024
+  cores       = 2
+  sockets     = 1
+  onboot      = true
+  agent       = 1
+  scsihw      = "virtio-scsi-pci"
+  cpu         = "host"
+  kvm         = true
+
+  clone       = "ubuntu24-template"
+  full_clone  = true
+
+  disk {
+    size     = "15G"
+    type     = "scsi"
+    storage  = "local-zfs"
+    iothread = 1
+  }
+
+  network {
+    model  = "virtio"
+    bridge = "vmbr0"
+  }
+
+  ciuser     = "ubuntu"
+  cipassword = var.LXC_PASS
+  sshkeys    = var.SSH_PUB_KEY
+  ipconfig0  = "ip=dhcp"
+
+  boot = "order=scsi0"
+}

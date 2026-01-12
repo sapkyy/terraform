@@ -12,8 +12,8 @@ resource "proxmox_lxc" "docker" {
   nameserver   = "192.168.31.1"
   searchdomain = "sapkyy.home"
 
-# add docker support
-  features { 
+  # add docker support
+  features {
     nesting = true
   }
 

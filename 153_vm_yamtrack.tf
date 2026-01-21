@@ -13,7 +13,7 @@ resource "proxmox_vm_qemu" "yamtrack" {
   full_clone = true
 
   cpu {
-    cores   = 2
+    cores   = 1
     sockets = 1
     type    = "host"
   }

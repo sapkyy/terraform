@@ -5,6 +5,7 @@ resource "proxmox_vm_qemu" "outside" {
   memory      = 1024
   start_at_node_boot = true
   agent       = 1
+  skip_ipv6   = true
   scsihw      = "virtio-scsi-pci"
   kvm         = true
 

@@ -1,7 +1,7 @@
-resource "proxmox_vm_qemu" "outside" {
-  name               = "outside"
+resource "proxmox_vm_qemu" "yamtrack" {
+  name               = "yamtrack"
   target_node        = "pve"
-  vmid               = 151
+  vmid               = 153
   memory             = 1024
   start_at_node_boot = true
   agent              = 1
